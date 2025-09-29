@@ -21,7 +21,7 @@ class studentData(BaseModel):
     sample_question_practiced: float
 
 
-filepath = "regression_model.joblib"
+filepath = r"backend\regression_model.joblib"
 # Creating and loading model
 model = joblib.load(filepath)
 
@@ -42,3 +42,7 @@ def predict(data: studentData):
 
     # Return the Result
     return {'prediction:', max(min(prediction[0], 100), 0)}
+
+
+if __name__ == '__main__':
+    uvicorn.run(app, host="0.0.0.0", port=5000)
